@@ -1,0 +1,170 @@
+@import 'https://www.nerdfonts.com/assets/css/webfont.css';
+
+#hover-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 1px;
+  z-index: 9999;
+}
+
+#root {
+  position: fixed;
+  top: -11px;
+  left: 0;
+  width: 100vw;
+  transition: top 0.2s;
+  z-index: 10000;
+}
+
+#hover-area:hover+#root,
+#root:hover {
+  top: 0;
+}
+
+#root:hover .workspaces {
+  display: none;
+}
+
+#root:hover .left {
+  display: none;
+}
+
+#root:not(:hover) .center,
+#root:not(:hover) .right {
+  display: none;
+}
+
+:root {
+  --bar-height: 15px;
+}
+
+i {
+  color: rgb(255, 255, 255 / 90%);
+  margin-right: 7px;
+  font-size: calc(var(--bar-height) * 0.5);
+}
+
+body {
+  color: rgb(255 255 255 / 60%);
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1;
+}
+
+html,
+body,
+#root {
+  height: var(--bar-height);
+}
+
+#root {
+  border-bottom: 1px solid rgb(255 255 255 / 5%);
+  background: transparent;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.center,
+.right {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.center {
+  color: rgb(255, 255, 255 / 90%);
+}
+
+.right {
+  color: rgb(255, 255, 255 / 90%);
+}
+
+.logo,
+.binding-mode,
+.tiling-direction,
+.network,
+.memory,
+.cpu,
+.battery {
+  margin-right: 16px;
+}
+
+.workspaces {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  width: 100vw;
+}
+
+.workspace {
+  background: transparent;
+  margin-right: 4px;
+  padding: calc(var(--bar-height) * 0.1) calc(var(--bar-height) * 0.3);
+  color: rgb(255 255 255 / 60%);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.workspace.available {
+  background: #290172;
+  color: rgb(255 255 255 / 90%);
+}
+
+.workspace.focused {
+  background: #3b6cff;
+  color: #fff;
+}
+
+.workspace:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.binding-mode,
+.tiling-direction {
+  background: black;
+  color: rgb(255 255 255 / 90%);
+  line-height: 1;
+  padding: calc(var(--bar-height) * 0.1) calc(var(--bar-height) * 0.3);
+  border: 0;
+  cursor: pointer;
+}
+
+.binding-mode {
+  margin-right: 4px;
+}
+
+.cpu .high-usage {
+  color: #900029;
+}
+
+.battery .charging-icon {
+  position: absolute;
+  font-size: 11px;
+  left: 7px;
+  top: 2px;
+}
+
+#root:hover .center,
+#root:hover .right {
+  background: black;
+  border-radius: 2px;
+}
