@@ -32,7 +32,7 @@
       providers.refresh && providers.refresh();
       setTimeout(() => {
         setOutputGlobal && setOutputGlobal(providers.outputMap);
-      }, 100); // Give provider a moment to refresh
+      }, 100);
     };
     let setOutputGlobal;
     function App() {
@@ -41,7 +41,6 @@
 
       useEffect(() => {
         providers.onOutput(() => setOutput(providers.outputMap));
-        // Remove polling interval
       }, []);
 
       function getBatteryIcon(batteryOutput) {
@@ -133,19 +132,16 @@
                 ></button>
               </>
             )}
-
             {output.memory && (
               <div className="memory">
                 <i className="nf nf-fae-chip"></i>
                 {Math.round(output.memory.usage)}%
               </div>
             )}
-
             {output.cpu && (
               <div className="cpu">
                 <i className="nf nf-oct-cpu"></i>
 
-                {/* Change the text color if the CPU usage is high. */}
                 <span
                   className={output.cpu.usage > 85 ? 'high-usage' : ''}
                 >
@@ -153,10 +149,8 @@
                 </span>
               </div>
             )}
-
             {output.battery && (
               <div className="battery">
-                {/* Show icon for whether battery is charging. */}
                 {output.battery.isCharging && (
                   <i className="nf nf-md-power_plug charging-icon"></i>
                 )}
